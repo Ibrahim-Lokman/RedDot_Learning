@@ -6,67 +6,52 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   var questionIndex = 0;
 
-  void selectedAnswer(){
-    questionIndex++;
+  void answerSelected(){
+
+    setState(() {
+      questionIndex++;
+    });
     print(questionIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = ["questionnnnn_01","questionnnnn_2"];
+    var questions = ["questionnnnn_01?","questionnnnn_2?"];
     return MaterialApp (
       home : Scaffold(
         appBar: AppBar(
-          title : Text("King"),
+          title : Text("First App"),
         ),
-        body: Row(
+        body: Column(
           children: [
-            Column(
-              children: [
                   Text(questions[questionIndex]),
                   ElevatedButton(
                       child: Text("1"),
-                      onPressed: selectedAnswer, //function defined above
-            ),
-            ElevatedButton(
-              child: Text("2"),
-              onPressed: selectedAnswer, // anonymous function
-            ),
+                      onPressed: answerSelected, 
+                   ),
+                  ElevatedButton(
+                      child: Text("2"),
+                      onPressed: answerSelected, 
+                   ),
+                   ElevatedButton(
+                      child: Text("3"),
+                      onPressed: answerSelected, 
+                   ),
+                  ElevatedButton(
+                      child: Text("4"),
+                      onPressed: answerSelected, 
+                   ),
           ],
-        ),
-        Column(
-          children: [
-            Text(questions[questionIndex]),
-            ElevatedButton(
-              child: Text("1"),
-              onPressed: selectedAnswer, //function defined above
-            ),
-            ElevatedButton(
-              child: Text("2"),
-              onPressed: selectedAnswer, // anonymous function
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Text(questions[questionIndex]),
-            ElevatedButton(
-              child: Text("1"),
-              onPressed: selectedAnswer, //function defined above
-            ),
-            ElevatedButton(
-              child: Text("2"),
-              onPressed: selectedAnswer, // anonymous function
-            ),
-          ],
-        ),
-            
-          ],
-        ),
-      )
+        ) 
+        )
     );
   }
 }

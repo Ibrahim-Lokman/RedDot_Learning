@@ -7,29 +7,63 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  var questionIndex = 0;
 
   void selectedAnswer(){
-    print("function called");
+    questionIndex++;
+    print(questionIndex);
   }
 
   @override
   Widget build(BuildContext context) {
+    var questions = ["questionnnnn_01","questionnnnn_2"];
     return MaterialApp (
       home : Scaffold(
         appBar: AppBar(
           title : Text("King"),
         ),
-        body: Column(
+        body: Row(
           children: [
-            Text("blah blah blaah, select an answer"),
+            Column(
+              children: [
+                  Text(questions[questionIndex]),
+                  ElevatedButton(
+                      child: Text("1"),
+                      onPressed: selectedAnswer, //function defined above
+            ),
+            ElevatedButton(
+              child: Text("2"),
+              onPressed: selectedAnswer, // anonymous function
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(questions[questionIndex]),
             ElevatedButton(
               child: Text("1"),
               onPressed: selectedAnswer, //function defined above
             ),
             ElevatedButton(
               child: Text("2"),
-              onPressed: () => print("anonymous function"), // anonymous function
+              onPressed: selectedAnswer, // anonymous function
             ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(questions[questionIndex]),
+            ElevatedButton(
+              child: Text("1"),
+              onPressed: selectedAnswer, //function defined above
+            ),
+            ElevatedButton(
+              child: Text("2"),
+              onPressed: selectedAnswer, // anonymous function
+            ),
+          ],
+        ),
+            
           ],
         ),
       )
